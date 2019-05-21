@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Gugudan02 {
 		public static void main(String args[])
 		{
-			int arr[]=new int[9];
+			int[] arr=new int[9];
 			Scanner sc = new Scanner(System.in);
 			int num = sc.nextInt();
 			
