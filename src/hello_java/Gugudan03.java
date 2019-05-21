@@ -17,7 +17,7 @@ public class Gugudan03 {
 		for(int a:arr)
 			System.out.println(a);
 	}
-	
+	/*
 	public static void main(String args[])
 	{
 		for(int i=2;i<=9;i++)
@@ -27,4 +27,5 @@ public class Gugudan03 {
 		}
 		
 	}
+	*/
 }
