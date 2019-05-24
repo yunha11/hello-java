@@ -4,27 +4,36 @@ import java.util.Scanner;
 
 public class Month {
 
+	private final static String PROMPT = "> "; 
+	public void runPrompt() 
+	{
+		Scanner scanner = new Scanner(System.in);
+		Calendar cal = new Calendar();
+		
+		while(true)
+		{
+			System.out.println("월을 입력하세요.");
+			System.out.print(PROMPT);
+			int mon = scanner.nextInt();
+			if(mon==-1) break;
+	
+			int days = cal.getDays(mon);
+			System.out.printf("%d월은 %d일까지 있습니다.\n", mon, days);
+			
+			cal.printCalendar(mon);
+		
+			
+
+			
+		}
+		
+		scanner.close();
+	
+	}
 	public static void main(String args[])
 	{
-		int[] month=new int[] {31,28,31,30,31,30,31,31,30,31,30,31};
+		Month p = new Month();
+		p.runPrompt();
 		
-		System.out.println("반복횟수를 입력하세요. ");
-		Scanner sc = new Scanner(System.in);
-		int t = sc.nextInt();
-		
-		for(int i=0;i<t;i++)
-		{
-			System.out.println("달을 입력하세요. ");
-			
-			
-			int mon = sc.nextInt();
-			
-			try {
-				System.out.println(mon + "월은 " + month[mon - 1] + "일까지 있습니다.");
-			} catch (Exception e) {
-
-			}
-		}
-		sc.close();
 	}
 }
