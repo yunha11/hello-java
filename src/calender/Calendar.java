@@ -2,6 +2,11 @@ package calender;
 
 import java.util.Scanner;
 import java.util.Date;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -12,11 +17,32 @@ public class Calendar {
 	private static final int[] leaf_month = new int[] {31,29,31,30,31,30,31,31,30,31,30,31};
 //	private HashMap<Date, String> planM;
 	private HashMap<Date, PlanItem> planMap;
+	private static final String Save_file = "calendar.dat";
 	
-	public Calendar()
+	public Calendar() throws ParseException
 	{
 	//	planM = new HashMap<Date, String>();
 		planMap = new HashMap<Date, PlanItem>();
+		File f = new File(Save_file);
+		if(!f.exists())
+			return;
+		
+		try {
+			Scanner s = new Scanner(f);
+			while(s.hasNext())
+			{
+				String date = s.next();
+				String detail = s.next();
+				PlanItem p = new PlanItem(date, detail);
+				planMap.put(p.getDate(), p);
+			}
+			s.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	/**
 	 * 
@@ -30,9 +56,23 @@ public class Calendar {
 	//	System.out.println(date);
 		
 	//	planM.put(date, plan);
-		PlanItem pi = new PlanItem(s_date, plan);
 		
+
+		PlanItem pi = new PlanItem(s_date, plan);
 		planMap.put(pi.getDate(), pi);
+		
+		
+		File file = new File(Save_file);
+		String item = pi.saveString(); 
+		try {
+			FileWriter fw = new FileWriter(file, true);
+			fw.write(item);
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		System.out.println("일정이 등록되었습니다.");
 	}
 	

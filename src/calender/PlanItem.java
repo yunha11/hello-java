@@ -37,4 +37,9 @@ public class PlanItem {
 	{
 		peoples += name + ",";
 	}
+
+	public String saveString() {
+		
+		return planDate.toString() + "," + detail + "\n";
+	}
 }

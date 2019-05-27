@@ -3,12 +3,12 @@ package calender;
 import java.util.Scanner;
 import java.text.ParseException;
 import java.util.HashMap;
-
+import java.io.File;
 
 public class Todo {
 	private static final String PROMPT = "> ";
 	private static final String[] weekday = new String[] {"SU", "MO", "TU", "WE", "TH", "FR", "SA"};
-	
+
 	/**
 	 * 
 	 * @param w	요일명
@@ -143,6 +143,7 @@ public class Todo {
 	}
 	public static void main(String args[]) throws ParseException
 	{
+		
 		Todo to = new Todo();
 		printMenu();
 		to.runPromt();
